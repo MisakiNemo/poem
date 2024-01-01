@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.poem.mapper.PoemContentMapper">
+
+
+    <select id="selectPoemContentByKeyword" resultType="com.example.poem.entity.PoemContent">
+    </select>
+
+
+
+    <select id="selectContentByPoemId" resultType="java.lang.String">
+        select line_content
+        from poems_content
+        where poem_id = #{poemId}
+        order by line_number
+    </select>
+
+
+    <select id="selectByFirstPinyin" resultType="com.example.poem.entity.PoemContent">
+        select *
+        from poems_content
+        where poems_content.line_first_pinyin like concat(#{firstPinYin},'_')
+    </select>
+    <select id="selectByWord" resultType="com.example.poem.entity.PoemContent">
+        select * from poems_content
+        where poems_content.line_content like concat('%',#{word},'%')
+    </select>
+</mapper>

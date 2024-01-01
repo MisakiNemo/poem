@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.poem.mapper.PoemMapper">
+    <select id="selectCustomPoem" resultType="com.example.poem.entity.Poem">
+        SELECT * FROM poetru WHERE title = #{title}
+    </select>
+    <select id="selectPoemByKeyword" resultType="com.example.poem.entity.Poem">
+        SELECT *
+        FROM poetry
+        WHERE title LIKE CONCAT('%', #{keyword}, '%')
+           OR content LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+</mapper>

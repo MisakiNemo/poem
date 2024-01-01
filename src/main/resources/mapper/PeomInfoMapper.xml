@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.poem.mapper.PoemInfoMapper">
+
+
+    <select id="selectPoemIdByKeyword" resultType="integer">
+        select id as poem_id
+        from poems_info
+        where title like concat('%', #{keyword}, '%')
+           or author like concat('%', #{keyword}, '%')
+        union
+        select poem_id as poem_id
+        from poems_content
+        where poems_content.line_content like concat('%', #{keyword}, '%')
+    </select>
+
+
+
+
+</mapper>
